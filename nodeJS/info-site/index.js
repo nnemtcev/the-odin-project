@@ -1,22 +1,26 @@
-const http = require('http');
-const fs = require('fs');
+const express = require('express');
+const app = express();
 
-http.createServer(function(req, res) {
-    if (req.url === '/') {
-        fs.readFile('index.html', function(err, data) {
-            return res.end(data);
-        });
-    } else if (req.url === '/about') {
-        fs.readFile('about.html', function(err, data) {
-            return res.end(data);
-        });
-    } else if (req.url === '/contact') {
-        fs.readFile('contact.html', function(err, data) {
-            return res.end(data);
-        });
+function handlePageNotFoundMiddleware(req, res, next) {
+    if (req.url !== '/' && req.url !== '/about' && req.url !== '/contact') {
+        res.sendFile(__dirname + '/404.html');
     } else {
-        fs.readFile('404.html', function(err, data) {
-            return res.end(data);
-        });
+        next();
     }
-}).listen(8080);
+};
+
+app.use(handlePageNotFoundMiddleware);
+
+app.get('/', function(req, res) {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/about', function(req, res) {
+    res.sendFile(__dirname + '/about.html');
+});
+
+app.get('/contact', function(req, res) {
+    res.sendFile(__dirname + '/contact.html');
+});
+
+app.listen(8080);
