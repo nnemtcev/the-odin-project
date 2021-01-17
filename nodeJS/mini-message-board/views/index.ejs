@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <a href="/form">New message</a>
+    <h1><%= title %></h1>
+    <div id="messages">
+      <% messages.forEach(function(message) { %>
+        <div>
+          <% const hours = message.added.getHours() %>
+          <% const minutes = message.added.getMinutes() %>
+          <p><%= `Posted at: ${hours}:${minutes}` %></p>
+          <h3><%= message.user %></h3>
+          <p><%= message.text %></p>
+        </div>
+      <% }); %>
+    </div>
+  </body>
+</html>
