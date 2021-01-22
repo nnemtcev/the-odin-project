@@ -1,21 +1,11 @@
-const getGameCategories = function(req, res, next) {
-    res.send('FINISH THIS CONTROLLER LATER');
-};
-
+// Get all the games in that category
 const getGameCategoryDetail = function(req, res, next) {
     res.send('FINISH THIS CONTROLLER LATER');
 };
 
-const editGameCategory = function(req, res, next) {
+// Create a new game category
+const createGameCategory = function(req, res, next) {
     res.send('FINISH THIS CONTROLLER LATER');
 };
 
-const deleteGameCategory = function(req, res, next) {
-    res.send('FINISH THIS CONTROLLER LATER');
-};
-
-const createNewGameCategory = function(req, res, next) {
-    res.send('FINISH THIS CONTROLLER LATER');
-};
-
-module.exports = { getGameCategories, getGameCategoryDetail, editGameCategory, deleteGameCategory, createNewGameCategory };
+module.exports = { getGameCategoryDetail, createGameCategory };
